@@ -1,0 +1,44 @@
+{
+  "name": "animate.css.js",
+  "version": "0.0.9",
+  "description": "Javascript(jQuery) helper for animate.css, let the animation in the JavaScript to use more simple.",
+  "main": "src/animate.jquery.js",
+  "browser": "lib/animate.jquery.min.js",
+  "scripts": {
+    "build": "npm run lint && uglifyjs src/animate.jquery.js -o dist/animate.jquery.min.js --source-map dist/animate.jquery.min.js.map --source-map-url animate.jquery.min.js.map --source-map-include-sources -p 1 -m -c",
+    "start": "open example/index.html",
+    "lint": "eslint src/ -c .eslintrc",
+    "publish": "npm publish -- registry=https://registry.npmjs.org/"
+  },
+  "dependencies": {
+    "jquery": "*"
+  },
+  "devDependencies": {
+    "babel-eslint": "^7.0.0",
+    "eslint": "^3.5.0",
+    "uglify-js": "^2.7.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lzwme/animate.css.js.git"
+  },
+  "keywords": [
+    "animate",
+    "animate.css",
+    "jQuery",
+    "umd",
+    "commonjs"
+  ],
+  "author": "lzwme",
+  "maintainers": [
+    {
+      "name": "renxia",
+      "url": "https://lzw.me"
+    }
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lzwme/animate.css.js/issues"
+  },
+  "homepage": "https://github.com/lzwme/animate.css.js"
+}

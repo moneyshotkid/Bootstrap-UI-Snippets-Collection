@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <!--
+  This website was carefully constructed by
+  Interactive Studios
+  http://www.interactivestudios.nl
+  -->
+  <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+  <title>jQuery Flex Vertical Center Plugin Demos</title>
+
+  <style>
+    body{
+      margin: 0;
+      font-family:'Roboto';
+    }
+    .box {
+      background: #C0392B;
+      height: 300px;
+      margin-bottom: 30px;
+    }
+    .box2 {
+      background: #E74C3C;
+      height: 100px;
+    }
+    p {
+      width: 20%;
+      margin: 0 auto;
+      color: #fff;
+      font-weight: 100;
+    }
+  </style>
+</head>
+
+<body>
+<div id="jquery-script-menu">
+<div class="jquery-script-center">
+<ul>
+<li><a href="http://www.jqueryscript.net/layout/Responsive-Vertical-Centering-Plugin-with-jQuery.html">Download This Plugin</a></li>
+<li><a href="http://www.jqueryscript.net/">Back To jQueryScript.Net</a></li>
+</ul>
+<div class="jquery-script-ads"><script type="text/javascript">
+    google_ad_client = "ca-pub-2783044520727903";
+    google_ad_slot = "2780937993";
+    google_ad_width = 728;
+    google_ad_height = 90;
+</script>
+<!-- jQuery_demo -->
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script></div>
+<div class="jquery-script-clear"></div>
+</div>
+</div>
+<h1 style="margin:150px auto 30px auto; text-align:center;">jQuery Flex Vertical Center Plugin Demos</h1>
+  <div class="box">
+    <p class="first-item">
+      This box is 20% wide and is always vertically centered within its parent, even if the view port changes (resize your window to see the result).
+    </p>
+  </div>
+
+  <div class="box">
+    <p class="second-item">
+      This box is 20% wide and is always vertically centered within its parent with a -50px offset, even if the view port changes (resize your window to see the result).
+    </p>
+  </div>
+
+  <div class="box parent">
+    <div class="box2">
+      <p class="third-item">
+        This box is 20% wide and is always vertically centered within the specified dark grey parent, even if the view port changes (resize your window to see the result).
+      </p>
+    </div>
+  </div>
+
+  <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="jquery.flexverticalcenter.js"></script>
+
+  <script>
+    $('.first-item').flexVerticalCenter({ cssAttribute: 'padding-top' });
+    $('.second-item').flexVerticalCenter({ cssAttribute: 'padding-top', verticalOffset: '50px' });
+    $('.third-item').flexVerticalCenter({ cssAttribute: 'padding-top', parentSelector: '.parent' });
+  </script>
+</body>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36251023-1']);
+  _gaq.push(['_setDomainName', 'jqueryscript.net']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</html>

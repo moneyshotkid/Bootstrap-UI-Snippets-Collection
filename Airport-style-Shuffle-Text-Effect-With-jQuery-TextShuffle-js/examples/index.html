@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TextShuffle.js Demo</title>
+    <style>
+        .demo, .demo-multiple {
+            font-family: monospace;
+            padding: 50px;
+            font-size: 40px;
+        }
+        button {
+            width: 150px;
+            height: 70px;
+            margin-left: 50px;
+            margin-top: 50px;
+            font-size: 20px;
+        }
+    </style>
+    <script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="../textShuffle.js"></script>
+    <script src="../jquery.textShuffle.js"></script>
+    <script>
+        var demos, demoShuffles, demoShufflesMultiple;
+        $(function () {
+            demos = $('.demo');
+            demoShuffles = [
+                demos.eq(0).textShuffle({chars: '1010'}),
+                demos.eq(1).textShuffle({chars: '█▓▒░█▓▒░█▓▒░'}),
+                demos.eq(2).textShuffle()
+            ];
+
+            demoShufflesMultiple = $('.demo-multiple').textShuffle({chars: '1010'});
+
+            $('button').on('click', function () {
+                for (var i = 0; i < demoShuffles.length; i++) {
+                    demoShuffles[i].play();
+                }
+
+                for (var i = 0; i < demoShufflesMultiple.length; i++) {
+                    demoShufflesMultiple[i].play();
+                }
+            })
+        });
+    </script>
+</head>
+<body>
+    <button>Play Demos!</button>
+    <div class="demo">Hover me to shuffle!</div>
+    <div class="demo">Hover me to shuffle!</div>
+    <div class="demo">Hover me to shuffle!</div>
+    <div class="demo-multiple">Hover me to shuffle!</div>
+    <div class="demo-multiple">Hover me to shuffle!</div>
+    <div class="demo-multiple">Hover me to shuffle!</div>
+</body>
+</html>

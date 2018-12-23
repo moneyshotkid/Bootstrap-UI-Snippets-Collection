@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+		<!-- BASICS -->
+        <meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<!-- Bootstrap -->
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/css/bootstrap.min.css">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css">
+<!--jQuery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<!--Bootstrap -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<style>
+
+		</style>
+</head>
+<body>
+<div style="width:300px;" class="container">
+	<div class="row">
+	<h3>Replace checkboxes in your forms. Increase perception
+	</h3>
+		<ul class="listrap">
+            <li>
+                <div class="listrap-toggle">
+                    <span></span>
+                    <img src="http://lorempixel.com/60/60/people/?v=1" class="img-circle" />
+                </div>
+                <strong>Sally Smith</strong>
+            </li>
+            <li class="active">
+                <div class="listrap-toggle">
+                    <span></span>
+                    <img src="http://lorempixel.com/60/60/people/?v=2" class="img-circle" />
+                </div>
+                <strong>John Downes</strong>
+            </li>
+            <li class="active">
+                <div class="listrap-toggle">
+                    <span></span>
+                    <img src="http://lorempixel.com/60/60/people/?v=3" class="img-circle" />
+                </div>
+                <strong>Stephanie Tays</strong>
+            </li>
+            <li>
+                <div class="listrap-toggle">
+                    <span></span>
+                    <img src="http://lorempixel.com/60/60/people/?v=4" class="img-circle" />
+                </div>
+                <strong>Rebecca Reynolds</strong>
+            </li>
+            <li class="active">
+                <div class="listrap-toggle">
+                    <span></span>
+                    <img src="http://lorempixel.com/60/60/people/?v=5" class="img-circle" />
+                </div>
+                <strong>Michelle Obama</strong>
+            </li>
+        </ul>
+	</div>
+</div>
+
+<style type="text/css">
+/* 
+// Listrap v1.0, by Gustavo Gondim (http://github.com/ggondim)
+// Licenced under MIT License
+// For updates, improvements and issues, see https://github.com/inosoftbr/listrap
+*/
+
+.listrap {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            cursor: default;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .listrap li {
+            margin: 0;
+            padding: 10px;
+        }
+
+        .listrap li.active, .listrap li:hover {
+            background-color: #d9edf7;
+        }
+
+        .listrap strong {
+            margin-left: 10px;
+        }
+
+        .listrap .listrap-toggle {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+        }
+
+        .listrap .listrap-toggle span {
+            background-color: #428bca;
+            opacity: 0.8;
+            z-index: 100;
+            width: 60px;
+            height: 60px;
+            display: none;
+            position: absolute;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 60px;
+            vertical-align: middle;
+            color: #ffffff;
+        }
+
+        .listrap .listrap-toggle span:before {
+            font-family: 'Glyphicons Halflings';
+            content: "\e013";
+        }
+
+        .listrap li.active .listrap-toggle span {
+            display: block;
+        }
+
+</style>
+
+<script type="text/javascript">
+// Listrap v1.0, by Gustavo Gondim (http://github.com/ggondim)
+// Licenced under MIT License
+// For updates, improvements and issues, see https://github.com/inosoftbr/listrap
+
+jQuery.fn.extend({
+    listrap: function () {
+        var listrap = this;
+        listrap.getSelection = function () {
+            var selection = new Array();
+            listrap.children("li.active").each(function (ix, el) {
+                selection.push($(el)[0]);
+            });
+            return selection;
+        }
+        var toggle = "li .listrap-toggle ";
+        var selectionChanged = function() {
+            $(this).parent().parent().toggleClass("active");
+            listrap.trigger("selection-changed", [listrap.getSelection()]);
+        }
+        $(listrap).find(toggle + "img").on("click", selectionChanged);
+        $(listrap).find(toggle + "span").on("click", selectionChanged);
+        return listrap;
+    }
+});
+$(document).ready(function () {
+    $(".listrap").listrap().on("selection-changed", function (event, selection) {
+        console.log(selection);
+    });
+});
+</script></body></html>

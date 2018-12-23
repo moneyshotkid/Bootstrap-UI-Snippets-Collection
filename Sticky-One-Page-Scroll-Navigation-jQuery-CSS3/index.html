@@ -1,0 +1,322 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sticky One Page Scroll Navigation Demo</title>
+
+<link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css" rel="stylesheet" type="text/css">
+<style>
+body { font-family: "Lato", sans-serif; }
+
+a { text-decoration: none; }
+
+.spa-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 0 2em;
+  height: 75px;
+  z-index: 2;
+  -webkit-transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.spa-header--scrolled {
+  background: #fafafa;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.spa-header--move-up {
+  -webkit-transform: translateY(-75px);
+  transform: translateY(-75px);
+  -webkit-transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.spa-header__logo { color: #000; }
+
+.spa-header__link {
+  margin-left: 1em;
+  color: #000;
+}
+
+.sticky-nav-tabs, .spa-slide {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 100vh;
+  position: relative;
+  background: #eee;
+  text-align: center;
+  padding: 0 2em;
+}
+
+.sticky-nav-tabs h1, .spa-slide h1 {
+  font-size: 2rem;
+  margin: 0;
+  letter-spacing: 1rem;
+}
+
+.sticky-nav-tabs h3, .spa-slide h3 {
+  font-size: 1rem;
+  letter-spacing: 0.3rem;
+  opacity: 0.6;
+}
+
+.sticky-nav-tabs-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 75px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  background: #fafafa;
+  z-index: 1;
+  -webkit-transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.sticky-nav-tabs-container--top-first {
+  position: fixed;
+  top: 75px;
+  -webkit-transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.sticky-nav-tabs-container--top-second {
+  position: fixed;
+  top: 0;
+}
+
+.sticky-nav-tab {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  color: #000;
+  letter-spacing: 0.1rem;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  font-size: 0.8rem;
+}
+
+.sticky-nav-tab:hover {
+  color: white;
+  background: rgba(102, 177, 241, 0.8);
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+.sticky-nav-tab-slider {
+  position: absolute;
+  bottom: 0;
+  width: 0;
+  height: 6px;
+  background: #66B1F1;
+  -webkit-transition: left 0.3s ease;
+  transition: left 0.3s ease;
+}
+ @media (min-width: 800px) {
+
+.sticky-nav-tabs h1,  .spa-slide h1 { font-size: 3rem; }
+
+.sticky-nav-tabs h3,  .spa-slide h3 { font-size: 1rem; }
+
+.sticky-nav-tab { font-size: 1rem; }
+}
+</style>
+</head>
+
+<body>
+<header class="spa-header">
+  <div class="spa-header__left"> <a href="" class="spa-header__logo">Sticky One Page Scroll Navigation</a> </div>
+</header>
+<section class="sticky-nav-tabs">
+  <h1>Sticky One Page Scroll Navigation</h1>
+  <div class="sticky-nav-tabs-container"> <a class="sticky-nav-tab" href="#tab-react">React</a> <a class="sticky-nav-tab" href="#tab-angular">Angular</a> <a class="sticky-nav-tab" href="#tab-cssscript">CSSScript</a> <a class="sticky-nav-tab" href="#tab-vue">VueJS</a> <a class="sticky-nav-tab" href="#tab-last">Last</a> <span class="sticky-nav-tab-slider"></span> </div>
+</section>
+<main class="spa-main">
+  <section class="spa-slide" id="tab-react">
+    <h1>React / React Native</h1>
+    <div class="jquery-script-ads" align="center" style="margin:30px auto;"><script type="text/javascript"><!--
+google_ad_client = "ca-pub-2783044520727903";
+/* jQuery_demo */
+google_ad_slot = "2780937993";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script></div>
+    <h3><a href="http://reactscript.com/" target="_blank">React / React Native Components</a></h3>
+  </section>
+  <section class="spa-slide" id="tab-angular">
+    <h1>Angular</h1>
+    <h3><a href="http://angularscript.com/" target="_blank">Angular 1.x / 2.x Components</a></h3>
+  </section>
+  <section class="spa-slide" id="tab-cssscript">
+    <h1>JavaScript & CSS</h1>
+    <h3><a href="http://www.cssscript.com/" target="_blank">Pure JavaScript & CSS</a></h3>
+  </section>
+  <section class="spa-slide" id="tab-vue">
+    <h1>Vue.js</h1>
+    <h3><a href="http://www.vuescript.com/" target="_blank">Angular 1.x / 2.x Components</a></h3>
+  </section>
+  <section class="spa-slide" id="tab-last">
+    <h1>Last Section</h1>
+    <h3>This is last section</h3>
+  </section>
+</main>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script> 
+<script>
+class StickyNavigation {
+	
+	constructor() {
+		this.currentId = null;
+		this.currentTab = null;
+		this.tabContainerHeight = 70;
+		this.lastScroll = 0;
+		let self = this;
+		$('.sticky-nav-tab').click(function() { 
+			self.onTabClick(event, $(this)); 
+		});
+		$(window).scroll(() => { this.onScroll(); });
+		$(window).resize(() => { this.onResize(); });
+	}
+	
+	onTabClick(event, element) {
+		event.preventDefault();
+		let scrollTop = $(element.attr('href')).offset().top - this.tabContainerHeight + 1;
+		$('html, body').animate({ scrollTop: scrollTop }, 600);
+	}
+	
+	onScroll() {
+		this.checkHeaderPosition();
+    this.findCurrentTabSelector();
+		this.lastScroll = $(window).scrollTop();
+	}
+	
+	onResize() {
+		if(this.currentId) {
+			this.setSliderCss();
+		}
+	}
+	
+	checkHeaderPosition() {
+		const headerHeight = 75;
+		if($(window).scrollTop() > headerHeight) {
+			$('.spa-header').addClass('spa-header--scrolled');
+		} else {
+			$('.spa-header').removeClass('spa-header--scrolled');
+		}
+		let offset = ($('.sticky-nav-tabs').offset().top + $('.sticky-nav-tabs').height() - this.tabContainerHeight) - headerHeight;
+		if($(window).scrollTop() > this.lastScroll && $(window).scrollTop() > offset) {
+			$('.spa-header').addClass('spa-header--move-up');
+			$('.sticky-nav-tabs-container').removeClass('sticky-nav-tabs-container--top-first');
+			$('.sticky-nav-tabs-container').addClass('sticky-nav-tabs-container--top-second');
+		} 
+		else if($(window).scrollTop() < this.lastScroll && $(window).scrollTop() > offset) {
+			$('.spa-header').removeClass('spa-header--move-up');
+			$('.sticky-nav-tabs-container').removeClass('sticky-nav-tabs-container--top-second');
+			$('.sticky-nav-tabs-container').addClass('sticky-nav-tabs-container--top-first');
+		}
+		else {
+			$('.spa-header').removeClass('spa-header--move-up');
+			$('.sticky-nav-tabs-container').removeClass('sticky-nav-tabs-container--top-first');
+			$('.sticky-nav-tabs-container').removeClass('sticky-nav-tabs-container--top-second');
+		}
+	}
+	
+	findCurrentTabSelector(element) {
+		let newCurrentId;
+		let newCurrentTab;
+		let self = this;
+		$('.sticky-nav-tab').each(function() {
+			let id = $(this).attr('href');
+			let offsetTop = $(id).offset().top - self.tabContainerHeight;
+			let offsetBottom = $(id).offset().top + $(id).height() - self.tabContainerHeight;
+			if($(window).scrollTop() > offsetTop && $(window).scrollTop() < offsetBottom) {
+				newCurrentId = id;
+				newCurrentTab = $(this);
+			}
+		});
+		if(this.currentId != newCurrentId || this.currentId === null) {
+			this.currentId = newCurrentId;
+			this.currentTab = newCurrentTab;
+			this.setSliderCss();
+		}
+	}
+	
+	setSliderCss() {
+		let width = 0;
+		let left = 0;
+		if(this.currentTab) {
+			width = this.currentTab.css('width');
+			left = this.currentTab.offset().left;
+		}
+		$('.sticky-nav-tab-slider').css('width', width);
+		$('.sticky-nav-tab-slider').css('left', left);
+	}
+	
+}
+
+new StickyNavigation();
+</script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36251023-1']);
+  _gaq.push(['_setDomainName', 'jqueryscript.net']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</body>
+</html>

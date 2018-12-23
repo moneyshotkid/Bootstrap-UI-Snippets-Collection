@@ -1,0 +1,23 @@
+{
+  "name": "TextShuffle.js",
+  "main": "TextShuffle.js",
+  "homepage": "https://github.com/alexprut/TextShuffle.js",
+  "authors": [
+    "Alex Prut <mail@alexprut.com>"
+  ],
+  "description": "",
+  "keywords": [
+    "text"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.1.0"
+  }
+}
